@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="340dp"
+    android:layout_height="200dp"
+    android:paddingTop="15dp"
+    android:paddingLeft="25dp"
+    android:background="@drawable/algonublado"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/estado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/estado_del_tiempo"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/visibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/visibilidad"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/temperatura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/temperatura"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/humedad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/humedad"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/viento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/viento"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/sensacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/sensacion_termica"
+        android:layout_margin="2dp"/>
+
+    <TextView
+        android:id="@+id/presion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/presion_nivel_localidad"
+        android:layout_margin="2dp"/>
+
+</LinearLayout>

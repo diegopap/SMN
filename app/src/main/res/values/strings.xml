@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMN</string>
+    <string name="estado_del_tiempo">ESTADO DEL TIEMPO:</string>
+    <string name="visibilidad">VISIBILIDAD:</string>
+    <string name="temperatura">TEMPERATURA:</string>
+    <string name="humedad">HUMEDAD:</string>
+    <string name="viento">VIENTO:</string>
+    <string name="sensacion_termica">SENSACION TERMICA:</string>
+    <string name="presion_nivel_localidad">PRESION NIVEL LOCALIDAD:</string>
+</resources>
