@@ -1,86 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#abc4a7">
 
-    <ImageView
-        android:id="@+id/background"
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/algonublado"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/estado_del_tiempo"
+            android:paddingTop="15dp"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/visibilidad"
+            android:layout_below="@id/estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/visibilidad"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/temperatura"
+            android:layout_below="@id/visibilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/temperatura"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/humedad"
+            android:layout_below="@id/temperatura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/humedad"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/viento"
+            android:layout_below="@id/humedad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/viento"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/sensacion"
+            android:layout_below="@id/viento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/sensacion_termica"
+            android:paddingLeft="25dp"
+            />
+
+        <TextView
+            android:id="@+id/presion"
+            android:layout_below="@id/sensacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/presion_nivel_localidad"
+            android:paddingLeft="25dp"
+            />
+
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/pronostico"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/algonublado"
-        android:scaleType="fitXY"/>
-
-    <TextView
-        android:id="@+id/estado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/estado_del_tiempo"
-        android:paddingTop="15dp"
-        android:paddingLeft="25dp"
+        android:numColumns="3"
         />
 
-    <TextView
-        android:id="@+id/visibilidad"
-        android:layout_below="@id/estado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/visibilidad"
-        android:paddingLeft="25dp"
-        />
-
-    <TextView
-        android:id="@+id/temperatura"
-        android:layout_below="@id/visibilidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/temperatura"
-        android:paddingLeft="25dp"
-        />
-
-    <TextView
-        android:id="@+id/humedad"
-        android:layout_below="@id/temperatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/humedad"
-        android:paddingLeft="25dp"
-        />
-
-    <TextView
-        android:id="@+id/viento"
-        android:layout_below="@id/humedad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/viento"
-        android:paddingLeft="25dp"
-        />
-
-    <TextView
-        android:id="@+id/sensacion"
-        android:layout_below="@id/viento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/sensacion_termica"
-        android:paddingLeft="25dp"
-        />
-
-    <TextView
-        android:id="@+id/presion"
-        android:layout_below="@id/sensacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="@string/presion_nivel_localidad"
-        android:paddingLeft="25dp"
-        />
-
-</RelativeLayout>
+</LinearLayout>

@@ -41,7 +41,7 @@ public class MainReceiver extends AppWidgetProvider {
 
                 int currentWidgetId = appWidgetIds[i];
 
-                final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_main);
+                final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_widget_current);
 
                 AppWidgetTarget appWidgetTarget = new AppWidgetTarget(context, views, R.id.background, appWidgetIds);
 

@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         runner.execute(getApplicationContext(), null, null);
+
+        ForecastTaskRunner forecast = new ForecastTaskRunner();
+        forecast.execute(getApplicationContext(), null, null);
 
     }
 
@@ -52,6 +58,20 @@ public class MainActivity extends AppCompatActivity {
             }
 
             ((TextView) findViewById(R.id.presion)).setText(getString(R.string.presion_nivel_localidad) + " " + weatherData.getPresion());
+        }
+    }
+
+    private class ForecastTaskRunner extends AsyncTask<Context, Void, ArrayList<ForecastData>> {
+
+        @Override
+        protected ArrayList<ForecastData> doInBackground(Context... context) {
+            return Utils.getForecastData(context[0]);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<ForecastData> data) {
+            GridView forecast = (GridView) findViewById(R.id.pronostico);
+            forecast.setAdapter(new ForecastAdapter(getApplicationContext(), data));
         }
     }
 }
