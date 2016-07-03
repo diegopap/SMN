@@ -37,6 +37,8 @@ public class MainReceiver extends AppWidgetProvider {
         @Override
         protected void onPostExecute(WeatherData weatherData) {
 
+            if (weatherData == null) return;
+
             for(int i = 0; i < appWidgetIds.length; i++) {
 
                 int currentWidgetId = appWidgetIds[i];

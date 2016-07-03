@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(WeatherData weatherData) {
+
+            if (weatherData == null) return;
+
             final ImageView background = (ImageView) findViewById(R.id.background);
             Glide.with(MainActivity.this)
                     .load(weatherData.getBackgroundUrl())
@@ -70,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<ForecastData> data) {
+
+            if (data == null) return;
+
             GridView forecast = (GridView) findViewById(R.id.pronostico);
             forecast.setAdapter(new ForecastAdapter(getApplicationContext(), data));
         }
