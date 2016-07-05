@@ -24,13 +24,39 @@ public class Utils {
 
         ArrayList<ForecastData> data = new ArrayList<>();
 
+        boolean extended = true;
+
         int index = html.indexOf("HOY ");
-        int index2 = html.indexOf("</", index);
+        int index2 = 0;
+        int index3 = 0;
+        int index4 = 0;
+        int index5 = 0;
+        int index6 = 0;
+        int index7 = 0;
+
+        if (index == -1) {
+            extended = false;
+
+            index = html.indexOf("lunes");
+            index2 = html.indexOf("martes");
+            index3 = html.indexOf("mi�rcoles");
+            index4 = html.indexOf("jueves");
+            index5 = html.indexOf("viernes");
+            index6 = html.indexOf("s�bado");
+            index7 = html.indexOf("domingo");
+
+            index = firstIndex(index, index2, index3, index4, index5, index6, index7);
+        }
+
+        index2 = html.indexOf("</", index);
         String dia = html.substring(index, index2);
 
-        index = html.indexOf("<b>", index2) + 3;
-        index2 = html.indexOf("</", index);
-        String dia2 = html.substring(index, index2);
+        String dia2 = null;
+        if (extended) {
+            index = html.indexOf("<b>", index2) + 3;
+            index2 = html.indexOf("</", index);
+            dia2 = html.substring(index, index2);
+        }
 
         index = html.indexOf("<b>", index2) + 3;
         index2 = html.indexOf("</", index);
@@ -40,9 +66,12 @@ public class Utils {
         index2 = html.indexOf("</", index);
         String parteDelDia2 = html.substring(index, index2);
 
-        index = html.indexOf("<b>", index2) + 3;
-        index2 = html.indexOf("</", index);
-        String parteDelDia3 = html.substring(index, index2);
+        String parteDelDia3 = null;
+        if (extended) {
+            index = html.indexOf("<b>", index2) + 3;
+            index2 = html.indexOf("</", index);
+            parteDelDia3 = html.substring(index, index2);
+        }
 
         index = html.indexOf("gifs/header/iconos/chicos/", index2);
         index2 = html.indexOf(".jpg", index) + 4;
@@ -52,9 +81,22 @@ public class Utils {
         index2 = html.indexOf(".jpg", index) + 4;
         String icono2 = html.substring(index, index2);
 
-        index = html.indexOf("gifs/header/iconos/chicos/", index2);
-        index2 = html.indexOf(".jpg", index) + 4;
-        String icono3 = html.substring(index, index2);
+        String icono3 = null;
+        String descripcion = null;
+        String descripcion2 = null;
+        if (extended) {
+            index = html.indexOf("gifs/header/iconos/chicos/", index2);
+            index2 = html.indexOf(".jpg", index) + 4;
+            icono3 = html.substring(index, index2);
+        } else {
+            index = html.indexOf("center;\">", index2) + 9;
+            index2 = html.indexOf("</div>", index);
+            descripcion = html.substring(index, index2);
+
+            index = html.indexOf("center;\">", index2) + 9;
+            index2 = html.indexOf("</div>", index);
+            descripcion2 = html.substring(index, index2);
+        }
 
         index = html.indexOf("<em>", index2) + 4;
         index2 = html.indexOf("</em>", index);
@@ -72,36 +114,64 @@ public class Utils {
         index2 = html.indexOf(" �C", index);
         String temperaturaValor2 = html.substring(index, index2);
 
-        index = html.indexOf("M", index2);
-        index2 = html.indexOf("</em>", index);
-        String temperaturaTipo3 = html.substring(index, index2);
+        String temperaturaTipo3 = null;
+        String temperaturaValor3 = null;
+        if (extended) {
+            index = html.indexOf("M", index2);
+            index2 = html.indexOf("</em>", index);
+            temperaturaTipo3 = html.substring(index, index2);
 
-        index = html.indexOf("\">", index2) + 2;
-        index2 = html.indexOf(" �C", index);
-        String temperaturaValor3 = html.substring(index, index2);
+            index = html.indexOf("\">", index2) + 2;
+            index2 = html.indexOf(" �C", index);
+            temperaturaValor3 = html.substring(index, index2);
 
-        index = html.indexOf("\"font1\">", index2) + 8;
-        index2 = html.indexOf("</td>", index);
-        String descripcion = html.substring(index, index2);
+            index = html.indexOf("\"font1\">", index2) + 8;
+            index2 = html.indexOf("</td>", index);
+            descripcion = html.substring(index, index2);
 
-        index = html.indexOf("\"font1\">", index2) + 8;
-        index2 = html.indexOf("</td>", index);
-        String descripcion2 = html.substring(index, index2);
+            index = html.indexOf("\"font1\">", index2) + 8;
+            index2 = html.indexOf("</td>", index);
+            descripcion2 = html.substring(index, index2);
+        }
 
-        index = html.indexOf("\"font1\">", index2) + 8;
-        index2 = html.indexOf("</td>", index);
-        String descripcion3 = html.substring(index, index2);
+        String descripcion3 = null;
+        if (extended) {
+            index = html.indexOf("\"font1\">", index2) + 8;
+            index2 = html.indexOf("</td>", index);
+            descripcion3 = html.substring(index, index2);
+        }
 
-
-        ForecastData uno = new ForecastData(dia,parteDelDia, icono1, temperaturaTipo, temperaturaValor, descripcion);
-        ForecastData dos = new ForecastData(dia2,parteDelDia2, icono2, temperaturaTipo2, temperaturaValor2, descripcion2);
-        ForecastData tres = new ForecastData(dia2,parteDelDia3, icono3, temperaturaTipo3, temperaturaValor3, descripcion3);
+        ForecastData uno = new ForecastData(dia, parteDelDia, icono1, temperaturaTipo, temperaturaValor, descripcion);
+        ForecastData dos = null;
+        ForecastData tres = null;
+        if (extended) {
+            dos = new ForecastData(dia2, parteDelDia2, icono2, temperaturaTipo2, temperaturaValor2, descripcion2);
+            tres = new ForecastData(dia2, parteDelDia3, icono3, temperaturaTipo3, temperaturaValor3, descripcion3);
+        } else {
+            dos = new ForecastData(dia, parteDelDia2, icono2, temperaturaTipo2, temperaturaValor2, descripcion2);
+        }
 
         data.add(uno);
         data.add(dos);
-        data.add(tres);
-
+        if (extended) {
+            data.add(tres);
+        }
         return data;
+    }
+
+    private static int firstIndex(int index, int index2, int index3, int index4, int index5, int index6, int index7) {
+
+        int smallest = Integer.MAX_VALUE;
+
+        if (smallest > index && index != -1) smallest = index;
+        if (smallest > index2 && index2 != -1) smallest = index2;
+        if (smallest > index3 && index3 != -1) smallest = index3;
+        if (smallest > index4 && index4 != -1) smallest = index4;
+        if (smallest > index5 && index5 != -1) smallest = index5;
+        if (smallest > index6 && index6 != -1) smallest = index6;
+        if (smallest > index7 && index7 != -1) smallest = index7;
+
+        return smallest;
     }
 
     public static WeatherData getWeatherData(Context context) {
